@@ -22,12 +22,12 @@ const server = http.createServer((req, res) => {
   else if (req.url === "/api/songs" && req.method === "POST") {
     addSong(req, res);
   }
-  // PUT /api/songs
+  // PUT /api/songs/:id
   else if (req.url.match(/\/api\/songs\/\w+/) && req.method === "PUT") {
     const id = req.url.split("/")[3];
     updateSong(req, res, id);
   }
-  // DELETE /api/songs
+  // DELETE /api/songs/:id
   else if (req.url.match(/\/api\/songs\/\w+/) && req.method === "DELETE") {
     const id = req.url.split("/")[3];
     deleteSong(req, res, id);
