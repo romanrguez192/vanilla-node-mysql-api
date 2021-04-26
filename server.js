@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     getSongs(req, res);
   }
   // GET /api/songs/:id
-  else if (req.url.match(/\/api\/songs\/\w+/) && req.method === "GET") {
+  else if (req.url.match(/^\/api\/songs\/\w+\/?$/) && req.method === "GET") {
     const id = req.url.split("/")[3];
     getSong(req, res, id);
   }
@@ -23,12 +23,12 @@ const server = http.createServer((req, res) => {
     addSong(req, res);
   }
   // PUT /api/songs/:id
-  else if (req.url.match(/\/api\/songs\/\w+/) && req.method === "PUT") {
+  else if (req.url.match(/^\/api\/songs\/\w+\/?$/) && req.method === "PUT") {
     const id = req.url.split("/")[3];
     updateSong(req, res, id);
   }
   // DELETE /api/songs/:id
-  else if (req.url.match(/\/api\/songs\/\w+/) && req.method === "DELETE") {
+  else if (req.url.match(/^\/api\/songs\/\w+\/?$/) && req.method === "DELETE") {
     const id = req.url.split("/")[3];
     deleteSong(req, res, id);
   }
